@@ -9,6 +9,10 @@ function getComputerChoice() {
         return "scissors";
     }
 }
+// console.log(getComputerChoice()); // Run multiple times to see random choices
 
-console.log(getComputerChoice()); // Run multiple times to see random choices
-
+function getHumanChoice() {
+    let choice = prompt("Enter rock, paper, or scissors:").toLowerCase();
+    return choice;
+}
+console.log(getHumanChoice());
