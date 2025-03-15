@@ -11,11 +11,23 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    return prompt("Enter rock, paper, or scissors:").toLowerCase();
+    let choice;
+    const validChoices = ["rock", "paper", "scissors"];
+
+    while (true) {
+        choice = prompt("Enter rock, paper, or scissors:");
+        if (choice) {  // Ensure user did not press "Cancel"
+            choice = choice.toLowerCase();
+            if (validChoices.includes(choice)) {
+                return choice; // Valid input, exit loop
+            }
+        }
+        alert("Invalid input! Please enter rock, paper, or scissors.");
+    }
 }
 
 function playGame() {
-    let humanScore = 0; // Moved inside playGame
+    let humanScore = 0;
     let computerScore = 0;
 
     function playRound(humanChoice, computerChoice) {
@@ -40,10 +52,10 @@ function playGame() {
     }
 
     for (let i = 0; i < 5; i++) {
-        console.log(`Round ${i + 1}:`); // Display round number
-        
-        const humanSelection = getHumanChoice();  
-        const computerSelection = getComputerChoice();  
+        console.log(`Round ${i + 1}:`);
+
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
 
         console.log(`Human: ${humanSelection}, Computer: ${computerSelection}`);
         playRound(humanSelection, computerSelection);
