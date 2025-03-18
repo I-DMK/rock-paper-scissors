@@ -1,4 +1,3 @@
-// Select the buttons and the results display area
 const buttons = document.querySelectorAll("button");
 const resultsDiv = document.getElementById("results");
 
@@ -14,7 +13,7 @@ function playRound(humanChoice) {
     const computerChoice = getComputerChoice();
 
     if (humanChoice === computerChoice) {
-        resultsDiv.innerHTML = `It's a tie! Both chose ${humanChoice}.`;
+        resultsDiv.textContent = `It's a tie! Both chose ${humanChoice}.`;
         return;
     }
 
@@ -24,21 +23,21 @@ function playRound(humanChoice) {
         (humanChoice === "paper" && computerChoice === "rock")
     ) {
         humanScore++;
-        resultsDiv.innerHTML = `You win! ${humanChoice} beats ${computerChoice}.<br>Score: Human ${humanScore} - Computer ${computerScore}`;
+        resultsDiv.textContent = `You win! ${humanChoice} beats ${computerChoice}. Score: Human ${humanScore} - Computer ${computerScore}`;
     } else {
         computerScore++;
-        resultsDiv.innerHTML = `You lose! ${computerChoice} beats ${humanChoice}.<br>Score: Human ${humanScore} - Computer ${computerScore}`;
+        resultsDiv.textContent = `You lose! ${computerChoice} beats ${humanChoice}. Score: Human ${humanScore} - Computer ${computerScore}`;
     }
 
-     // Check if someone reaches 5 points
     if (humanScore === 5) {
-        resultsDiv.innerHTML += `<br><strong>You won the game! 🎉</strong>`;
+        resultsDiv.textContent += ` You won the game!`;
         disableButtons();
     } else if (computerScore === 5) {
-        resultsDiv.innerHTML += `<br><strong>Computer won the game! 💻</strong>`;
+        resultsDiv.textContent += ` Computer won the game!`;
         disableButtons();
     }
 }
+
 
 function disableButtons() {
     buttons.forEach(button => button.disabled = true);
